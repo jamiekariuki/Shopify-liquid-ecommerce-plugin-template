@@ -1,0 +1,48 @@
+<div class="humberger-right d-flex align-items-center" >
+    <a href="#" id="sidebarCollapse" onclick="myFunction(this)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle humberger align-items-center d-inline-flex">
+        <span class="">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </span>
+        <span class="ml-3 d-inline-block text-dark text-menu">SIDEBAR</span>
+    </a>
+    <div class="humbergerbar p-5" id="sidebar">
+        <a id="dismiss" href="#" class="text-secondary small">
+            {% include 'icon-close' %}
+        </a>
+        {%- include 'block-currencies' -%}
+        {%- include 'block-wishlist' -%}
+        {%- include 'block-compare' -%}
+        {%- if section.settings.enable_cateogry -%}
+        {%- include 'sidebar-option-category' -%}
+        {%- endif -%}
+        {%- if section.settings.workinghours != blank -%}
+        <h6 class="mt-5 mb-4 font-weight-bold">{{section.settings.workinghours}}</h6>
+        {%- endif -%}
+        {%- if section.settings.timeopen != blank -%}
+        <p class="time-open">
+            {{section.settings.timeopen}}
+        </p>
+        {%- endif -%}
+        {%- if section.settings.istahead != blank -%}
+        <h6 class="mt-5 mb-4 font-weight-bold">{{section.settings.istahead}}</h6>
+        {%- endif -%}
+        {%- if section.settings.enable_insta -%}
+        <div class="instagram row mb-0 dots-negative {% if section.settings.radius %} instagram-radius{% endif %}" id="Instagram-{{ section.id }}"
+            data-style="carousel"
+            data-accesstoken="{{section.settings.accesstoken}}"
+            data-limit="{{ section.settings.limit }}" 
+            data-slidesToShow="{{section.settings.show}}"
+            data-arrows="{{ section.settings.arrows }}"
+            data-dots="{{ section.settings.dots }}" 
+            data-draggable="{{ section.settings.draggable }}" 
+            data-infinite="{{ section.settings.infinite }}" 
+            data-rows="{{ section.settings.rows }}" 
+            data-section-id="{{ section.id }}" 
+            data-section-type="instagrams">
+        </div>
+        {%- endif -%}
+    </div>
+    <div class="overlaysidebar"></div>
+</div>
